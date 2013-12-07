@@ -18,6 +18,7 @@ public class BlockColorMultiplier extends Block {
 
 	/*
 	 * インベントリ内での色乗算用のメソッド. RGBのカラーコードを返す.
+	 * 0xFFFFFFとして返せるが, マイクラ内の仕様は0xRRBBGGである点に注意.
 	 * 引数がメタデータの値なので, 今回は利用していないが, メタデータに対応してカラーコードを変えることも可能.
 	 */
 	@Override

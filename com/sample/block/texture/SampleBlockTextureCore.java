@@ -65,14 +65,14 @@ public class SampleBlockTextureCore {
 				.setTextureName("cobblestone")
 				.setCreativeTab(CreativeTabs.tabBlock);
 
-		LanguageRegistry.addName(blockUsesVanillaTexture, "Sample Block Uses Vanilla Texture");
-		LanguageRegistry.addName(blockUsesCustomTexture,  "Sample Block Uses Custom Texture");
-		LanguageRegistry.addName(blockUsesColorMutiplier, "Sample Block Uses Color Multipler");
-		LanguageRegistry.addName(blockUsesComplexTexture, "Sample Block Uses Complex Texture");
-
 		GameRegistry.registerBlock(blockUsesVanillaTexture, "blockUsesVanillaTexture");
 		GameRegistry.registerBlock(blockUsesCustomTexture,  "blockUsesCustomTexture");
 		GameRegistry.registerBlock(blockUsesColorMutiplier, "blockUsesColorMultiplier");
 		GameRegistry.registerBlock(blockUsesComplexTexture, "blockUsesComplexTexture;");
+
+		LanguageRegistry.addName(blockUsesVanillaTexture, "Sample Block Uses Vanilla Texture");
+		LanguageRegistry.addName(blockUsesCustomTexture,  "Sample Block Uses Custom Texture");
+		LanguageRegistry.addName(blockUsesColorMutiplier, "Sample Block Uses Color Multipler");
+		LanguageRegistry.addName(blockUsesComplexTexture, "Sample Block Uses Complex Texture");
 	}
 }

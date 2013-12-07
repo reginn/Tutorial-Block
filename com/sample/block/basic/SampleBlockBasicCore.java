@@ -31,12 +31,16 @@ public class SampleBlockBasicCore {
 				.setUnlocalizedName("blockBasic")
 				.setCreativeTab(CreativeTabs.tabBlock);
 
-		LanguageRegistry.addName(blockBasic, "Sample Block Basic");
-
 		/*
 		 * ブロックの追加はアイテムと異なり, 以下のメソッドで登録する必要がある.
 		 * registerBlockの引数は(ブロックのインスタンス, そのブロックの名前)である.
 		 */
 		GameRegistry.registerBlock(blockBasic, "blockBasic");
+
+		/*
+		 * ブロックの名前はregiserBlockの後にやるようにするべき.
+		 * 通常は先でも問題ないが, 別途のメタデータを使ったID削減においては後にする必要がある.
+		 */
+		LanguageRegistry.addName(blockBasic, "Sample Block Basic");
 	}
 }
