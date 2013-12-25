@@ -16,7 +16,7 @@ public class BlockColoredStone extends Block {
 	/*
 	 * カラーコード, それぞれ黒, 赤, 青, 緑
 	 */
-	private int[] color = {0x000000, 0xFF0000, 0x00FF00, 0x0000FF};
+	private final int[] color = {0x000000, 0xFF0000, 0x00FF00, 0x0000FF};
 
 	public BlockColoredStone(int blockID, Material material) {
 		super(blockID, material);
@@ -26,11 +26,12 @@ public class BlockColoredStone extends Block {
 	 * メタデータの違いによるブロックの追加はgetSubBlocksで行う.
 	 * 基本的にメタデータごとのItemStackのインスタンスを生成して引数のlistに追加すればいい.
 	 */
+    @SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int blockID, CreativeTabs creativeTabs, List list) {
 		for (int i = 0; i < 4; ++i) {
-			list.add(new ItemStack(blockID, 1, i));
+            list.add(new ItemStack(blockID, 1, i));
 		}
 	}
 
