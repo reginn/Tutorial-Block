@@ -20,7 +20,7 @@ public class ItemBlockColoredStone extends ItemBlockWithMetadata {
 	 */
 	@Override
 	public String getUnlocalizedName(ItemStack itemStack) {
-		return super.getUnlocalizedName() + "." + itemStack.getItemDamage();
+		return super.getUnlocalizedName() + "" + itemStack.getItemDamage();
 	}
 
 }
