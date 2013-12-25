@@ -26,7 +26,7 @@ public class BlockColoredStone extends Block {
 	 * メタデータの違いによるブロックの追加はgetSubBlocksで行う.
 	 * 基本的にメタデータごとのItemStackのインスタンスを生成して引数のlistに追加すればいい.
 	 */
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int blockID, CreativeTabs creativeTabs, List list) {
