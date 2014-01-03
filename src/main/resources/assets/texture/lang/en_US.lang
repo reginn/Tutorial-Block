@@ -1,0 +1,4 @@
+tile.blockUsesVanillaTexture.name=Sample Block Uses Vanilla Texture
+tile.blockUsesCustomTexture.name=Sample Block Uses Custom Texture
+tile.blockUsesColorMultiplier.name=Sample Block Uses Color Multiplier
+tile.blockUsesComplexTexture.name=Sample Block Uses Complex Texture

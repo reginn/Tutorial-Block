@@ -1,39 +1,36 @@
 package com.sample.block.texture;
 
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
-@Mod(
-	modid = "BlockTexture",
-	name  = "BlockTexture",
-	version = "0.0.0"
-)
-public class SampleBlockTextureCore {
+@Mod(modid = SampleBlockTextureCore.MODID, version = SampleBlockTextureCore.VERSION)
+public class SampleBlockTextureCore
+{
+	public static final String MODID = "BlockTexture";
+	public static final String VERSION = "0.0.0";
 
 	public static Block blockUsesVanillaTexture;
 	public static Block blockUsesCustomTexture;
-	public static Block blockUsesColorMutiplier;
+	public static Block blockUsesColorMultiplier;
 	public static Block blockUsesComplexTexture;
 
 	@Mod.EventHandler
-	public void init(FMLInitializationEvent event) {
-
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		/*
 		 * バニラのテクスチャを利用する場合.
 		 * アイテムの場合と同様に, setTextureNameでテクスチャの名前を指定する.
 		 * ブロックの場合, minecraft.jar内のassets/minecraft/textures/blocksを参照する.
 		 * 拡張子(.png)は不要な点に注意.
 		 */
-		blockUsesVanillaTexture = (new Block(4001, Material.rock))
-				.setUnlocalizedName("blockUsesVanillaTexture")
-				.setTextureName("log_oak")
-				.setCreativeTab(CreativeTabs.tabBlock);
+		blockUsesVanillaTexture = (new BlockTexture(Material.field_151576_e))
+				.func_149663_c("blockUsesVanillaTexture")
+				.func_149658_d("log_oak")
+				.func_149647_a(CreativeTabs.tabBlock);
 
 		/*
 		 * 独自のテクスチャを利用する場合.
@@ -43,36 +40,40 @@ public class SampleBlockTextureCore {
 		 * eclipseでの実行の場合, eclipse/minecraft/bin/assets/custom/textures/blocks/cross.pngが参照される.
 		 * 拡張子(.png)は不要な点に注意
 		 */
-		blockUsesCustomTexture = (new Block(4002, Material.rock))
-				.setUnlocalizedName("blockUsesCustomTexture")
-				.setTextureName("block:cross")
-				.setCreativeTab(CreativeTabs.tabBlock);
+		blockUsesCustomTexture = (new BlockTexture(Material.field_151576_e))
+				.func_149663_c("blockUsesCustomTexture")
+				.func_149658_d("texture:cross")
+				.func_149647_a(CreativeTabs.tabBlock);
 
 		/*
-		 * 基本は今までどおり, BlockクラスではなくBlockクラスを継承したBlockColorMutiplierクラスからインスタンスを生成する.
+		 * 基本は今までどおり, BlockクラスではなくBlockクラスを継承したBlockColorMultiplierクラスからインスタンスを生成する.
 		 */
-		blockUsesColorMutiplier = (new BlockColorMultiplier(4003, Material.rock))
-				.setUnlocalizedName("blockUsesColorMultiplier")
-				.setTextureName("cobblestone")
-				.setCreativeTab(CreativeTabs.tabBlock);
+		blockUsesColorMultiplier = (new BlockColorMultiplier(Material.field_151576_e))
+				.func_149663_c("blockUsesColorMultiplier")
+				.func_149658_d("cobblestone")
+				.func_149647_a(CreativeTabs.tabBlock);
 
 		/*
 		 * 基本はいままでどおり, BlockクラスではなくBlockクラスを継承したBlockComplexTextureクラスからインスタンスを生成する.
 		 * 今回はsetTextureNameで指定したテクスチャをブロックの上下に, BlockComplexTexture内で追加したテクスチャを四方に設定している.
 		 */
-		blockUsesComplexTexture = (new BlockComplexTexture(4004, Material.rock))
-				.setUnlocalizedName("blockUsesComplexTexture")
-				.setTextureName("cobblestone")
-				.setCreativeTab(CreativeTabs.tabBlock);
+		blockUsesComplexTexture = (new BlockComplexTexture(Material.field_151576_e))
+				.func_149663_c("blockUsesComplexTexture")
+				.func_149658_d("cobblestone")
+				.func_149647_a(CreativeTabs.tabBlock);
 
 		GameRegistry.registerBlock(blockUsesVanillaTexture, "blockUsesVanillaTexture");
 		GameRegistry.registerBlock(blockUsesCustomTexture,  "blockUsesCustomTexture");
-		GameRegistry.registerBlock(blockUsesColorMutiplier, "blockUsesColorMultiplier");
+		GameRegistry.registerBlock(blockUsesColorMultiplier, "blockUsesColorMultiplier");
 		GameRegistry.registerBlock(blockUsesComplexTexture, "blockUsesComplexTexture;");
 
-		LanguageRegistry.addName(blockUsesVanillaTexture, "Sample Block Uses Vanilla Texture");
-		LanguageRegistry.addName(blockUsesCustomTexture,  "Sample Block Uses Custom Texture");
-		LanguageRegistry.addName(blockUsesColorMutiplier, "Sample Block Uses Color Multipler");
-		LanguageRegistry.addName(blockUsesComplexTexture, "Sample Block Uses Complex Texture");
+		/*
+		 * langファイルによるローカライズのみになったため不要
+		 *
+		 * LanguageRegistry.addName(blockUsesVanillaTexture, "Sample Block Uses Vanilla Texture");
+		 * LanguageRegistry.addName(blockUsesCustomTexture,  "Sample Block Uses Custom Texture");
+		 * LanguageRegistry.addName(blockUsesColorMultiplier, "Sample Block Uses Color Multiplier");
+		 * LanguageRegistry.addName(blockUsesComplexTexture, "Sample Block Uses Complex Texture");
+		 */
 	}
 }

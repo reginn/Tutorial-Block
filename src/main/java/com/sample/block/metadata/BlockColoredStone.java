@@ -5,21 +5,23 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockColoredStone extends Block {
-
+public class BlockColoredStone extends Block
+{
 	/*
 	 * カラーコード, それぞれ黒, 赤, 青, 緑
 	 */
 	private final int[] color = {0x000000, 0xFF0000, 0x00FF00, 0x0000FF};
 
-	public BlockColoredStone(int blockID, Material material) {
-		super(blockID, material);
+	public BlockColoredStone(Material material)
+	{
+		super(material);
 	}
 
 	/*
@@ -29,25 +31,27 @@ public class BlockColoredStone extends Block {
 	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int blockID, CreativeTabs creativeTabs, List list) {
-		for (int i = 0; i < 4; ++i) {
-			list.add(new ItemStack(blockID, 1, i));
+	public void func_149666_a(Item item, CreativeTabs tab, List list)
+	{
+		for (int i = 0; i < 4; ++i)
+		{
+			list.add(new ItemStack(item, 1, i));
 		}
 	}
 
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getRenderColor(int meta) {
+	public int func_149741_i(int meta)
+	{
 		return this.color[meta];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess iBlockAccess, int x, int y, int z) {
+	public int func_149720_d(IBlockAccess iBlockAccess, int x, int y, int z) {
 		int meta = iBlockAccess.getBlockMetadata(x, y, z);
 
 		return this.color[meta];
 	}
-
-
 }

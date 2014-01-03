@@ -1,29 +1,28 @@
 package com.sample.block.texture;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
-
-import net.minecraftforge.common.ForgeDirection;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
+import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockComplexTexture extends Block {
-
+public class BlockComplexTexture extends Block
+{
 	/*
 	 * 四方(東西南北)のテクスチャ.
 	 * クライアントのみなのでSideOnlyアノテーションの付与が必要.
 	 */
 	@SideOnly(Side.CLIENT)
-	private Icon sidedIcon;
+	private IIcon sidedIcon;
 
 	/*
 	 * コンストラクタはブロックIDとMaterialをスーパークラスのコンストラクタに渡すだけ.
 	 */
-	public BlockComplexTexture(int blockID, Material material) {
-		super(blockID, material);
+	public BlockComplexTexture(Material material)
+	{
+		super(material);
 	}
 
 	/*
@@ -33,8 +32,9 @@ public class BlockComplexTexture extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {
-		super.registerIcons(iconRegister);
+	public void func_149651_a(IIconRegister iconRegister)
+	{
+		super.func_149651_a(iconRegister);
 		this.sidedIcon = iconRegister.registerIcon("log_oak");
 	}
 
@@ -45,12 +45,13 @@ public class BlockComplexTexture extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon func_149691_a(int side, int meta)
+	{
 		/*
 		 * 描画する面が上下の場合, 丸石のテクスチャに, 四方の場合原木のテクスチャにしている.
 		 */
 		if (side == ForgeDirection.UP.ordinal() || side == ForgeDirection.DOWN.ordinal()) {
-			return this.blockIcon;
+			return this.field_149761_L;
 		}
 		return this.sidedIcon;
 	}

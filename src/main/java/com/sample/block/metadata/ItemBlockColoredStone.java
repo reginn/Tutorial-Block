@@ -4,10 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 
-public class ItemBlockColoredStone extends ItemBlockWithMetadata {
-
-	public ItemBlockColoredStone(int blockID, Block block) {
-		super(blockID, block);
+public class ItemBlockColoredStone extends ItemBlockWithMetadata
+{
+	public ItemBlockColoredStone(Block block)
+	{
+		super(block, block);
 	}
 
 	/*
@@ -19,8 +20,9 @@ public class ItemBlockColoredStone extends ItemBlockWithMetadata {
 	 * tile.blockColoredStone.3
 	 */
 	@Override
-	public String getUnlocalizedName(ItemStack itemStack) {
-		return super.getUnlocalizedName() + "" + itemStack.getItemDamage();
+	public String getUnlocalizedName(ItemStack itemStack)
+	{
+		return super.getUnlocalizedName() + "." + itemStack.getItemDamage();
 	}
 
 }

@@ -1,41 +1,40 @@
 package com.sample.block.metadata;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 
-import net.minecraftforge.common.ForgeDirection;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-public class BlockDummyFurnace extends Block {
-
+public class BlockDummyFurnace extends Block
+{
 	/*
 	 * 正面, 側面, 上下それぞれのテクスチャ
 	 * 今回は可読性のためにBlockクラスのフィールドであるblockIconは利用しない.
 	 * クライアントのみなのでSideOnlyアノテーションが必要.
 	 */
 	@SideOnly(Side.CLIENT)
-	Icon frontIcon;
+	IIcon frontIcon;
 
 	@SideOnly(Side.CLIENT)
-	Icon sideIcon;
+	IIcon sideIcon;
 
 	@SideOnly(Side.CLIENT)
-	Icon topIcon;
+	IIcon topIcon;
 
 	/*
-	 * コンストラクタ, ブロックIDとMaterialをスーパークラスのコンストラクタに渡すだけ.
+	 * コンストラクタ, Materialをスーパークラスのコンストラクタに渡すだけ.
 	 */
-	public BlockDummyFurnace(int blockID, Material material) {
-		super(blockID, material);
+	public BlockDummyFurnace(Material material)
+	{
+		super(material);
 	}
 
 	/*
@@ -44,10 +43,11 @@ public class BlockDummyFurnace extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {
+	public void func_149651_a(IIconRegister iconRegister)
+	{
 		this.frontIcon = iconRegister.registerIcon("furnace_front_off");
-		this.sideIcon   = iconRegister.registerIcon("furnace_side");
-		this.topIcon     = iconRegister.registerIcon("furnace_top");
+		this.sideIcon  = iconRegister.registerIcon("furnace_side");
+		this.topIcon   = iconRegister.registerIcon("furnace_top");
 	}
 
 	/*
@@ -58,12 +58,14 @@ public class BlockDummyFurnace extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess iBlockAccess, int x, int y, int z, int side) {
+	public IIcon func_149673_e(IBlockAccess iBlockAccess, int x, int y, int z, int side)
+	{
 		/*
 		 * ForgeDirectionのEnum定数を利用しているが, 可読性に拘らなければ以下のようにしてもよい.
 		 * if (side == 0 || side == 1)
 		 */
-		if (side == ForgeDirection.UP.ordinal() || side == ForgeDirection.DOWN.ordinal()) {
+		if (side == ForgeDirection.UP.ordinal() || side == ForgeDirection.DOWN.ordinal())
+		{
 			return this.topIcon;
 		}
 		int meta = iBlockAccess.getBlockMetadata(x, y, z);
@@ -84,11 +86,13 @@ public class BlockDummyFurnace extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon func_149691_a(int side, int meta)
+	{
 		/*
 		 * if (side == 0 || side == 1)と等価
 		 */
-		if (side == ForgeDirection.UP.ordinal() || side == ForgeDirection.DOWN.ordinal()) {
+		if (side == ForgeDirection.UP.ordinal() || side == ForgeDirection.DOWN.ordinal())
+		{
 			return this.topIcon;
 		}
 		/*
@@ -108,7 +112,8 @@ public class BlockDummyFurnace extends Block {
 	 * プレイヤーが持っているItemStackをworld内の座標(x, y, z)に設置したときに呼ばれる.
 	 */
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemStack) {
+	public void func_149689_a(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemStack)
+	{
 		/*
 		 * プレイヤーの向いている方向(東西南北)を求める.
 		 * やっていることは単純で, プレイヤーの向いている体の向きを東西南北(0~3)に変換しているだけ.

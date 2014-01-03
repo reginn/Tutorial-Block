@@ -7,13 +7,14 @@ import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockColorMultiplier extends Block {
-
+public class BlockColorMultiplier extends Block
+{
 	/*
 	 * コンストラクタはブロックIDとMaterialをスーパークラスのコンストラクタに渡すだけ
 	 */
-	public BlockColorMultiplier(int blockID, Material material) {
-		super(blockID, material);
+	public BlockColorMultiplier(Material material)
+	{
+		super(material);
 	}
 
 	/*
@@ -23,7 +24,8 @@ public class BlockColorMultiplier extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getRenderColor(int meta) {
+	public int func_149741_i(int meta)
+	{
 		return 0xEE1111;
 	}
 
@@ -34,7 +36,8 @@ public class BlockColorMultiplier extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess iBlockAccess, int x, int y, int z) {
+	public int func_149720_d(IBlockAccess iBlockAccess, int x, int y, int z)
+	{
 		return 0xEE1111;
 	}
 }

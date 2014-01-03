@@ -1,25 +1,26 @@
 package com.sample.block.basic;
 
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
-@Mod(
-	modid   = "BlockBasic",
-	name    = "BlockBasic",
-	version = "0.0.0"
-)
-public class SampleBlockBasicCore {
+@Mod(modid = SampleBlockBasicCore.MODID, version = SampleBlockBasicCore.VERSION)
+public class SampleBlockBasicCore
+{
+	public static final String MODID   = "BlockBasic";
+	public static final String VERSION = "0.0.0";
 
 	public static Block blockBasic;
 
+	/*
+	 * Blockなどの登録はpreInitで行うことになった.
+	 */
 	@Mod.EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		/*
 		 * 無機能ブロックのインスタンスを生成する.
 		 * Blockの引数は(ブロックID, Material).
@@ -27,20 +28,22 @@ public class SampleBlockBasicCore {
 		 * 今回はrockにしている.
 		 * クリエイティブタブのBlockタブに追加している.
 		 */
-		blockBasic = (new Block(4000, Material.rock))
-				.setUnlocalizedName("blockBasic")
-				.setCreativeTab(CreativeTabs.tabBlock);
+		blockBasic = (new BlockBasic(Material.field_151576_e))
+				.func_149663_c("blockBasic")
+				.func_149647_a(CreativeTabs.tabBlock);
 
 		/*
 		 * ブロックの追加はアイテムと異なり, 以下のメソッドで登録する必要がある.
 		 * registerBlockの引数は(ブロックのインスタンス, そのブロックの名前)である.
+		 * 1.7からはこのメソッドで登録すれば自動でIDを割り当てるようになった.
+		 * もし1.6以前のワールドからの互換性を考慮するならGameData.blockRegistry.add()メソッドを使うべきである.
 		 */
 		GameRegistry.registerBlock(blockBasic, "blockBasic");
 
 		/*
-		 * ブロックの名前はregiserBlockの後にやるようにするべき.
-		 * 通常は先でも問題ないが, 別途のメタデータを使ったID削減においては後にする必要がある.
+		 * ブロックの名前はlangファイルで行うようになった.
+		 * assets/basic/lang/en_US.langを参照のこと.
+		 * LanguageRegistry.addName(blockBasic, "Sample Block Basic");
 		 */
-		LanguageRegistry.addName(blockBasic, "Sample Block Basic");
 	}
 }
