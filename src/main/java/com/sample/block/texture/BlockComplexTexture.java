@@ -55,6 +55,4 @@ public class BlockComplexTexture extends Block
 		}
 		return this.sidedIcon;
 	}
-
-
 }

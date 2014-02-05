@@ -49,7 +49,7 @@ public class BlockColoredStone extends Block
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess iBlockAccess, int x, int y, int z)
-    {
+	{
 		int meta = iBlockAccess.getBlockMetadata(x, y, z);
 		return this.color[meta];
 	}
