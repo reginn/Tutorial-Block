@@ -24,7 +24,7 @@ public class BlockColorMultiplier extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int func_149741_i(int meta)
+	public int getRenderColor(int meta)
 	{
 		return 0xEE1111;
 	}
@@ -36,7 +36,7 @@ public class BlockColorMultiplier extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int func_149720_d(IBlockAccess iBlockAccess, int x, int y, int z)
+	public int colorMultiplier(IBlockAccess iBlockAccess, int x, int y, int z)
 	{
 		return 0xEE1111;
 	}

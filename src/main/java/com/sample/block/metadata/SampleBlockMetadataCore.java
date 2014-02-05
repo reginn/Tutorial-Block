@@ -32,9 +32,9 @@ public class SampleBlockMetadataCore
 		 * Blockクラスを継承したBlockDummyFurnaceクラスからインスタンスを生成する.
 		 * setTextureNameはやらない. 理由はBlockDummyFurnaceクラスを参照のこと.
 		 */
-		blockDummyFurnace = (new BlockDummyFurnace(Material.field_151576_e))
-				.func_149663_c("blockDummyFurnace")
-				.func_149647_a(CreativeTabs.tabBlock);
+		blockDummyFurnace = (new BlockDummyFurnace(Material.rock))
+				.setBlockName("blockDummyFurnace")
+				.setCreativeTab(CreativeTabs.tabBlock);
 
 		GameRegistry.registerBlock(blockDummyFurnace, "blockDummyFurnace");
 
@@ -48,10 +48,10 @@ public class SampleBlockMetadataCore
 		 * Blockクラスを継承したBlockColoredStoneクラスからインスタンスを生成する.
 		 * 今回はメタデータを使って1つのブロックIDで4種類の黒, 赤, 青, 緑色の石を追加する.
 		 */
-		blockColoredStone = (new BlockColoredStone(Material.field_151576_e))
-				.func_149663_c("blockColoredStone")
-				.func_149658_d("stone")
-				.func_149647_a(CreativeTabs.tabBlock);
+		blockColoredStone = (new BlockColoredStone(Material.rock))
+				.setBlockName("blockColoredStone")
+				.setBlockTextureName("stone")
+				.setCreativeTab(CreativeTabs.tabBlock);
 
 		/*
 		 * メタデータを使って1つのブロックIDで複数のブロックを扱う時は, registerBlockの第二引数にItemBlockないしItemBlockWithMetadataを継承したクラスを渡す.

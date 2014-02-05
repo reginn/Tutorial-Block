@@ -43,7 +43,7 @@ public class BlockDummyFurnace extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister iconRegister)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.frontIcon = iconRegister.registerIcon("furnace_front_off");
 		this.sideIcon  = iconRegister.registerIcon("furnace_side");
@@ -58,7 +58,7 @@ public class BlockDummyFurnace extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149673_e(IBlockAccess iBlockAccess, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z, int side)
 	{
 		/*
 		 * ForgeDirectionのEnum定数を利用しているが, 可読性に拘らなければ以下のようにしてもよい.
@@ -86,7 +86,7 @@ public class BlockDummyFurnace extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		/*
 		 * if (side == 0 || side == 1)と等価
@@ -112,7 +112,7 @@ public class BlockDummyFurnace extends Block
 	 * プレイヤーが持っているItemStackをworld内の座標(x, y, z)に設置したときに呼ばれる.
 	 */
 	@Override
-	public void func_149689_a(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemStack)
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemStack)
 	{
 		/*
 		 * プレイヤーの向いている方向(東西南北)を求める.

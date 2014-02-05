@@ -28,9 +28,9 @@ public class SampleBlockBasicCore
 		 * 今回はrockにしている.
 		 * クリエイティブタブのBlockタブに追加している.
 		 */
-		blockBasic = (new BlockBasic(Material.field_151576_e))
-				.func_149663_c("blockBasic")
-				.func_149647_a(CreativeTabs.tabBlock);
+		blockBasic = (new BlockBasic(Material.rock))
+				.setBlockName("blockBasic")
+				.setCreativeTab(CreativeTabs.tabBlock);
 
 		/*
 		 * ブロックの追加はアイテムと異なり, 以下のメソッドで登録する必要がある.

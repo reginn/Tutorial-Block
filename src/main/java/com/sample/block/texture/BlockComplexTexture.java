@@ -32,9 +32,9 @@ public class BlockComplexTexture extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister iconRegister)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		super.func_149651_a(iconRegister);
+		super.registerBlockIcons(iconRegister);
 		this.sidedIcon = iconRegister.registerIcon("log_oak");
 	}
 
@@ -45,13 +45,13 @@ public class BlockComplexTexture extends Block
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int side, int meta)
+	public IIcon getIcon(int side, int meta)
 	{
 		/*
 		 * 描画する面が上下の場合, 丸石のテクスチャに, 四方の場合原木のテクスチャにしている.
 		 */
 		if (side == ForgeDirection.UP.ordinal() || side == ForgeDirection.DOWN.ordinal()) {
-			return this.field_149761_L;
+			return this.blockIcon;
 		}
 		return this.sidedIcon;
 	}

@@ -31,7 +31,7 @@ public class BlockColoredStone extends Block
 	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149666_a(Item item, CreativeTabs tab, List list)
+	public void getSubBlocks(Item item, CreativeTabs tab, List list)
 	{
 		for (int i = 0; i < 4; ++i)
 		{
@@ -39,19 +39,18 @@ public class BlockColoredStone extends Block
 		}
 	}
 
-
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int func_149741_i(int meta)
+	public int getRenderColor(int meta)
 	{
 		return this.color[meta];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int func_149720_d(IBlockAccess iBlockAccess, int x, int y, int z) {
+	public int colorMultiplier(IBlockAccess iBlockAccess, int x, int y, int z)
+    {
 		int meta = iBlockAccess.getBlockMetadata(x, y, z);
-
 		return this.color[meta];
 	}
 }
