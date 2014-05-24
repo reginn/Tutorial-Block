@@ -37,7 +37,7 @@ public class SampleBlockTextureCore
 		 * アイテムの場合と同様に, setTextureNameでdomain:テクスチャ名で指定する.
 		 * domainはbin/minecraft/assets/domain/textures/のようにassets以下のフォルダを指定するもの.
 		 * サンプルの場合, 画像ファイルはresources/assets/texture/textures/blocks/cross.pngが参照される.
-		 * 拡張子(.png)は不要な点に注意
+		 * 拡張子(.png)は不要な点に注意.
 		 */
 		blockUsesCustomTexture = (new BlockTexture(Material.rock))
 				.setBlockName("blockUsesCustomTexture")
@@ -64,7 +64,7 @@ public class SampleBlockTextureCore
 		GameRegistry.registerBlock(blockUsesVanillaTexture,  "blockUsesVanillaTexture");
 		GameRegistry.registerBlock(blockUsesCustomTexture,   "blockUsesCustomTexture");
 		GameRegistry.registerBlock(blockUsesColorMultiplier, "blockUsesColorMultiplier");
-		GameRegistry.registerBlock(blockUsesComplexTexture,  "blockUsesComplexTexture;");
+		GameRegistry.registerBlock(blockUsesComplexTexture,  "blockUsesComplexTexture");
 
 		/*
 		 * langファイルによるローカライズのみになったため不要
